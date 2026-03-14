@@ -1,0 +1,70 @@
+body{
+font-family: "Segoe UI", sans-serif;
+background:#f6f7fb;
+color:#333;
+}
+
+/* container */
+
+.main-box{
+max-width:500px;
+margin:auto;
+margin-top:80px;
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* dashboard */
+
+.dashboard{
+max-width:1000px;
+margin:auto;
+margin-top:40px;
+}
+
+/* balance card */
+
+.balance-card{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,0.08);
+margin-bottom:20px;
+}
+
+.balance-card h1{
+font-size:42px;
+font-weight:bold;
+}
+
+/* form */
+
+input{
+margin-bottom:10px;
+}
+
+/* table */
+
+.table{
+background:white;
+border-radius:10px;
+overflow:hidden;
+}
+
+.table th{
+background:#f1f1f1;
+}
+
+/* buttons */
+
+.btn-bank{
+background:#333;
+color:white;
+border:none;
+}
+
+.btn-bank:hover{
+background:#555;
+}

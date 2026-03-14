@@ -1,0 +1,190 @@
+{% extends "base.html" %} {% block content %}
+
+<style>
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+  }
+
+  .card-box {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .history-box {
+    margin-top: 15px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+
+  .bank-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: #1a2b4c;
+    letter-spacing: 3px;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+</style>
+
+<h1 class="bank-title">MyBank</h1>
+
+<div class="dashboard-grid">
+  <!-- USER INFO -->
+  <div class="card-box">
+    <h5>User Info</h5>
+
+    <p>Name: {{ user.name }}</p>
+    <p>Username: {{ user.username }}</p>
+    <p>Total Accounts: {{ accounts|length }}</p>
+    <p>Total Money: {{ total_money }} ฿</p>
+
+    <a href="/logout" class="btn btn-dark btn-sm">Logout</a>
+  </div>
+
+  <!-- ACCOUNTS -->
+  <div class="card-box">
+    <h5>Your Accounts</h5>
+
+    <table class="table table-sm">
+      <tr>
+        <th>Account</th>
+        <th>Balance</th>
+      </tr>
+
+      {% for acc in accounts %}
+
+      <tr>
+        <td>{{ acc.account_number }}</td>
+        <td>{{ acc.balance }}</td>
+      </tr>
+
+      {% endfor %}
+    </table>
+
+    <h6>Create Account</h6>
+
+    <form method="POST" action="/create_bank_account">
+      <input
+        class="form-control form-control-sm"
+        name="account_number"
+        placeholder="Account Number"
+      />
+
+      <button class="btn btn-primary btn-sm mt-1">Create</button>
+    </form>
+  </div>
+
+  <!-- DEPOSIT -->
+  <div class="card-box">
+    <h5>Deposit</h5>
+
+    <form method="POST" action="/deposit">
+      <select name="account" class="form-control form-control-sm">
+        {% for acc in accounts %}
+
+        <option value="{{ acc.account_number }}">
+          {{ acc.account_number }}
+        </option>
+
+        {% endfor %}
+      </select>
+
+      <input
+        class="form-control form-control-sm mt-1"
+        name="amount"
+        placeholder="Amount"
+      />
+
+      <button class="btn btn-success btn-sm mt-1">Deposit</button>
+    </form>
+
+    <hr />
+
+    <h5>Withdraw</h5>
+
+    <form method="POST" action="/withdraw">
+      <select name="account" class="form-control form-control-sm">
+        {% for acc in accounts %}
+
+        <option value="{{ acc.account_number }}">
+          {{ acc.account_number }}
+        </option>
+
+        {% endfor %}
+      </select>
+
+      <input
+        class="form-control form-control-sm mt-1"
+        name="amount"
+        placeholder="Amount"
+      />
+
+      <button class="btn btn-danger btn-sm mt-1">Withdraw</button>
+    </form>
+  </div>
+
+  <!-- TRANSFER -->
+  <div class="card-box">
+    <h5>Transfer</h5>
+
+    <form method="POST" action="/transfer">
+      <label>From</label>
+
+      <select name="source_account" class="form-control form-control-sm">
+        {% for acc in accounts %}
+
+        <option value="{{ acc.account_number }}">
+          {{ acc.account_number }}
+        </option>
+
+        {% endfor %}
+      </select>
+
+      <label class="mt-1">Target</label>
+
+      <input class="form-control form-control-sm" name="target_account" />
+
+      <label class="mt-1">Amount</label>
+
+      <input class="form-control form-control-sm" name="amount" />
+
+      <button class="btn btn-dark btn-sm mt-2">Transfer</button>
+    </form>
+  </div>
+</div>
+
+<!-- TRANSACTION HISTORY -->
+
+<div class="card-box history-box">
+  <h5>Transaction History</h5>
+
+  <table class="table table-sm">
+    <tr>
+      <th>Time</th>
+      <th>Account</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Target</th>
+    </tr>
+
+    {% for t in transactions %}
+
+    <tr>
+      <td>{{ t.time }}</td>
+      <td>{{ t.account_number }}</td>
+      <td>{{ t.type }}</td>
+      <td>{{ t.amount }}</td>
+      <td>{{ t.target_account }}</td>
+    </tr>
+
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

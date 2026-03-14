@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="main-box">
+  <h2 class="text-center mb-4">Create Account</h2>
+
+  <form method="POST" action="/create_account">
+    <label>Full Name</label>
+    <input class="form-control" name="name" required />
+
+    <label>Username</label>
+    <input class="form-control" name="username" required />
+
+    <label>Password</label>
+    <input class="form-control" type="password" name="password" required />
+
+    <label>Confirm Password</label>
+    <input
+      class="form-control"
+      type="password"
+      name="confirm_password"
+      required
+    />
+
+    <button class="btn btn-bank w-100 mt-3">Create Account</button>
+  </form>
+</div>
+
+{% endblock %}

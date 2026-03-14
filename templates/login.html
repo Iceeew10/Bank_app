@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="main-box">
+  <h2 class="text-center mb-4">Login Account</h2>
+
+  <form method="POST" action="/login">
+    <label>Username</label>
+    <input class="form-control" name="username" />
+
+    <label>Password</label>
+    <input class="form-control" type="password" name="password" />
+
+    <button class="btn btn-bank w-100 mt-3">Login</button>
+  </form>
+
+  <div class="text-center mt-3">
+    <a href="/register">Create Account</a>
+  </div>
+</div>
+
+{% endblock %}

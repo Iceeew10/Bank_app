@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <title>MyBank</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      /* MYBANK TITLE */
+
+      h1,
+      h2 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 42px;
+        color: #2c3e50;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* CARD BOX */
+
+      .card-box {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
+      }
+
+      .card-box:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      /* TABLE */
+
+      .table {
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .table th {
+        background: #f3f6fb;
+        font-weight: 600;
+      }
+
+      /* INPUT */
+
+      .form-control {
+        border-radius: 8px;
+        border: 1px solid #e1e5ec;
+      }
+
+      .form-control:focus {
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+        border-color: #4c84ff;
+      }
+
+      /* BUTTON */
+
+      button,
+      .btn {
+        border-radius: 8px;
+        padding: 6px 14px;
+        font-weight: 500;
+        transition: 0.25s;
+      }
+
+      .btn-primary {
+        background: #4c84ff;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background: #3467db;
+      }
+
+      .btn-success {
+        background: #1fbf75;
+        border: none;
+      }
+
+      .btn-success:hover {
+        background: #17a866;
+      }
+
+      .btn-danger {
+        background: #ff4d4f;
+        border: none;
+      }
+
+      .btn-danger:hover {
+        background: #e43d3f;
+      }
+
+      .btn-dark {
+        background: #2f3640;
+        border: none;
+      }
+
+      .btn-dark:hover {
+        background: #1e272e;
+      }
+
+      /* HISTORY TABLE */
+
+      .history-box {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body class="bank-bg">
+    <div class="container mt-5">{% block content %} {% endblock %}</div>
+  </body>
+</html>
